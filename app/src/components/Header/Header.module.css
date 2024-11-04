@@ -1,0 +1,33 @@
+.header {
+  width: 100%;
+  height: 100px;
+  background-color: #222;
+  box-shadow: 1px 1px 5px black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-inline: 30px;
+}
+
+.divInput {
+  background-color: black;
+  border-radius: 25px;
+}
+
+.divInput i {
+  margin-left: 20px;
+}
+
+.divInput input, input:focus {
+  border: 0;
+  outline: 0;
+}
+
+.divInput input{
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border-radius: 25px;
+  width: 300px;
+  font-size: 17px;
+}
