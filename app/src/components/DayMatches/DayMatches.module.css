@@ -1,0 +1,11 @@
+.mainSection {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.matchesDiv {
+  background-color: black;
+  width: 50%;
+  border-radius: 10px;
+}
