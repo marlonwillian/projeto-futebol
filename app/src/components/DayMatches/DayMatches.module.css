@@ -5,7 +5,31 @@
 }
 
 .matchesDiv {
-  background-color: black;
-  width: 50%;
+  width: 60%;
+  height: 250px;
   border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 50px;
+}
+
+.matchesDiv:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.matchesDiv h1 {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 25px;
+}
+
+.homeTeam, .awayTeam, .matchInfo {
+  text-align: center;
+}
+
+.matchesDiv img{
+  width: 113px;
+  min-width: 113px;
 }
