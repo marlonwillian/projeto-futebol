@@ -1,35 +1,72 @@
 .mainSection {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   margin-top: 50px;
 }
 
 .matchesDiv {
-  width: 60%;
-  height: 250px;
+  background-color: #00000049;
+  width: 63%;
+  height: 270px;
   border-radius: 10px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 50px;
   align-items: center;
-  padding: 50px;
-}
-
-.matchesDiv:before {
-  content: "";
-  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 5px black;
+  border: 1.5px solid #ffffff91;
 }
 
 .matchesDiv h1 {
+  font-size: 35px;
   margin-top: 16px;
   text-align: center;
-  font-size: 25px;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: #000000bb;
+}
+
+.matchInfo h1{
+  margin-block: 8px;
 }
 
 .homeTeam, .awayTeam, .matchInfo {
   text-align: center;
 }
 
+.homeTeam h1, .awayTeam h1{
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0;
+  margin-top: 15px;
+}
+
 .matchesDiv img{
   width: 113px;
   min-width: 113px;
+}
+
+.matchDetails {
+  display: flex;
+  gap: 300px;
+}
+
+.matchDetails h1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  font-size: 20px;
+  display: flex;
+  background-color: #00000075;
+  padding: 15px;
+  border: 1.5px solid #ffffff91;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px black;
+}
+
+.matchDetails > h1 > hr {
+  border: 1.5px solid #ffffff91;
+  margin-inline: 15px;
+  box-shadow: 2px 2px 5px black;
 }

@@ -11,9 +11,23 @@ app.use(
   })
 );
 
-app.get("/", async (req, res) => {
+app.get("/live-matches", async (req, res) => {
   try {
-    const response = await axios.get("https://api.football-data.org/v4/matches", {
+    const response = await axios.get("https://api.football-data.org/v4/teams/81/matches?status=SCHEDULED", {
+      headers: {
+        "X-Auth-Token": "3c2b89bab19c4ce2bcf1c530d1102ed7"
+      }
+    });
+    res.status(200).json(response.data); 
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Erro ao buscar dados da API externa." });
+  };
+});
+
+app.get("/:leagues", async (req, res) => {
+  try {
+    const response = await axios.get("https://api.football-data.org/v4/competitions/:leagues/standings", {
       headers: {
         "X-Auth-Token": "3c2b89bab19c4ce2bcf1c530d1102ed7"
       }

@@ -5,9 +5,9 @@ function App() {
   const [dayMatches, setDayMatches] = useState()
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchDayMatches = async () => {
       try {
-        const response = await fetch('http://localhost:5000/');
+        const response = await fetch('http://localhost:5000/live-matches');
         if(!response.ok) {
           throw new Error('Erro na conexão')
         }
@@ -18,7 +18,7 @@ function App() {
       }
     };
 
-    fetchData();
+    fetchDayMatches();
   }, [])
 
   return (
