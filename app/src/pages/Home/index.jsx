@@ -6,7 +6,7 @@ function Home({ dayMatches }) {
   return (
     <div className={styles.homeBackground}>
       <title>Home</title>
-      <Header/>
+      <Header dayMatches={dayMatches}/>
       <DayMatches dayMatches={dayMatches}/>
     </div>
   );

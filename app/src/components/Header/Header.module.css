@@ -32,6 +32,10 @@
   font-size: 17px;
 }
 
+.timesSeguidos {
+  border: 1px solid #ffffff7e
+}
+
 @media (width <= 720px ) {
   .header {
     justify-content: center;

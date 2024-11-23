@@ -6,14 +6,14 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000", "http://192.168.0.23:3000"],
     methods: ["GET"]
   })
 );
 
 app.get("/live-matches", async (req, res) => {
-  try {
-    const response = await axios.get("https://api.football-data.org/v4/teams/81/matches?status=SCHEDULED", {
+  try {;
+    const response = await axios.get("https://api.football-data.org/v4/matches", {
       headers: {
         "X-Auth-Token": "3c2b89bab19c4ce2bcf1c530d1102ed7"
       }

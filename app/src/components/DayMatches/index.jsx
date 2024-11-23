@@ -3,31 +3,43 @@ import styles from "./DayMatches.module.css";
 
 function DayMatches({ dayMatches }) {
   const [match, setMatch] = useState([])
+
   const [followTeam, setFollowTeam] = useState([])
-  
+  const [hFollowFedback, setHfollowFedback] = useState(false)
+  const [aFollowFedback, setAfollowFedback] = useState(false)
+
   useEffect(() => {
     if (dayMatches != undefined) {
       setMatch(dayMatches.matches)
     }
   }, [dayMatches])
 
-  /* #6c8cc8 - possível cor secundaria */
-
   console.log(match)
 
   function formataData (data) {
-    let fdata = data.slice(0, 10)
     const aData = [data.slice(8,10), data.slice(5,7), data.slice(2, 4)] 
     return `${aData[0]}/${aData[1]}/${aData[2]}`
   } 
 
   function formataHorario (horario) {
-    let fdata = horario.slice(11, 16)
-    const aHorario = [horario.slice(11,13), horario.slice(14,16)] 
+    const aHorario = [horario.slice(11,13), horario.slice(14,16)]
+
+    if(aHorario[0] == "00") {
+      aHorario[0] = "24"
+    }
+
     return `${aHorario[0] - 3}:${aHorario[1]}`
   }
 
-  console.log(followTeam)
+  let i = null;
+
+  function follow(teamId, team, operation) {
+    if (operation === false) {
+      localStorage.setItem(teamId, team)
+    } else {
+      localStorage.removeItem(teamId.toString())
+    }
+  }
 
   return (
     <section className={styles.mainSection}>
@@ -46,7 +58,17 @@ function DayMatches({ dayMatches }) {
                 <div className={styles.homeTeam} onMouseOver={() => setFollowTeam(match.homeTeam.name)} onMouseLeave={() => setFollowTeam("")}>
                   <img src={`${match.homeTeam.crest}`} alt="Escudo do time anfitrião"/>
                   <h1>{`${match.homeTeam.tla}`}</h1>
-                  <span style={{opacity: match.homeTeam.name == followTeam ? "1" : "0"}}>Seguir</span>
+                  <span 
+                    style={{opacity: match.homeTeam.name == followTeam ? "1" : "0"}} 
+                    onClick={
+                      () => {
+                        follow(match.homeTeam.id, match.homeTeam.name, localStorage.getItem(match.homeTeam.id) == match.homeTeam.name);
+                        setHfollowFedback(!hFollowFedback)
+                      }
+                    }
+                  >
+                    {localStorage.getItem(match.homeTeam.id) == match.homeTeam.name || hFollowFedback ? "Seguindo" : "Seguir"}
+                  </span>
                 </div>
                 <div className={styles.matchInfo}>
                   <img
@@ -57,12 +79,20 @@ function DayMatches({ dayMatches }) {
                   <h1 className={styles.score}>
                       {match.status === "FINISHED" || match.status === "FINISHED" ? `${match.score.fullTime.home} X ${match.score.fullTime.away}` : "X"}
                   </h1>
-                  <h1>{`${match.status === "FINISHED" ? "Encerrado" : match.status === "IN_PLAY" ? "Em andamento" : match.status === "PAUSED" ? "Intervalo" : ""}`}</h1>
+                  <h1>{`${match.status === "FINISHED" ? "Encerrado" : match.status === "IN_PLAY" ? "Ao vivo" : match.status === "PAUSED" ? "Intervalo" : ""}`}</h1>
                 </div>
                 <div className={styles.awayTeam} onMouseOver={() => setFollowTeam(match.awayTeam.name)} onMouseLeave={() => setFollowTeam("")}>
                   <img src={`${match.awayTeam.crest}`} alt="Escudo do time visitante"/>
                   <h1>{`${match.awayTeam.tla}`}</h1>
-                  <span style={{opacity: match.awayTeam.name == followTeam ? "1" : "0"}}>Seguir</span>
+                  <span 
+                    style={{opacity: match.awayTeam.name == followTeam ? "1" : "0"}}
+                    onClick={() => {
+                      follow(match.awayTeam.id, match.awayTeam.name, localStorage.getItem(match.awayTeam.id) == match.awayTeam.name);
+                      setAfollowFedback(!aFollowFedback)
+                    }}
+                  >
+                    {localStorage.getItem(match.awayTeam.id) == match.awayTeam.name || aFollowFedback ? "Seguindo" : "Seguir"}
+                  </span>
                 </div>
               </div>
               <div className={styles.matchDetails}>
