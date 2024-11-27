@@ -44,7 +44,7 @@ function DayMatches({ dayMatches }) {
   return (
     <section className={styles.mainSection}>
         {
-          match.map((match, i) => i == 0 ? (
+          match.map((match, i) => i == 3 ? (
             <>
               <div
                 className={styles.matchesDiv}
@@ -77,7 +77,7 @@ function DayMatches({ dayMatches }) {
                     alt="Emblema da competição"
                   />
                   <h1 className={styles.score}>
-                      {match.status === "FINISHED" || match.status === "FINISHED" ? `${match.score.fullTime.home} X ${match.score.fullTime.away}` : "X"}
+                      {match.status === "IN_PLAY" || match.status === "FINISHED" ? `${match.score.fullTime.home} X ${match.score.fullTime.away}` : "X"}
                   </h1>
                   <h1>{`${match.status === "FINISHED" ? "Encerrado" : match.status === "IN_PLAY" ? "Ao vivo" : match.status === "PAUSED" ? "Intervalo" : ""}`}</h1>
                 </div>

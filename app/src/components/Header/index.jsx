@@ -7,7 +7,6 @@ function Header({ dayMatches }) {
   useEffect(() => {
     for (var i = 1; i < localStorage.length; i++) {
       
-      console.log(i)
     }
   }, [])
 
