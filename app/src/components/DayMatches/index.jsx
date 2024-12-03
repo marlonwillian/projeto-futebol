@@ -31,8 +31,6 @@ function DayMatches({ dayMatches }) {
     return `${aHorario[0] - 3}:${aHorario[1]}`
   }
 
-  let i = null;
-
   function follow(teamId, team, operation) {
     if (operation === false) {
       localStorage.setItem(teamId, team)
