@@ -1,3 +1,5 @@
+import DayMatches from "../DayMatches";
+import FollowedTeamsCard from "../FollowedTeamsCard";
 import styles from "./Header.module.css";
 import { useEffect, useState } from "react";
 
@@ -27,10 +29,21 @@ function Header({ dayMatches }) {
       </div>
       <div 
         className={styles.sideMenu} 
-        style={{right: sideMenu ? "0" : "-305px"}}
+        style={{right: sideMenu ? "0" : "-350px"}}
       >
-        <span onClick={() => setSideMenu(false)}>X</span>
-        <h1>Times seguidos</h1>
+        <div className={styles.title}>
+          <span onClick={() => setSideMenu(false)}>X</span>
+          <h1>Times seguidos</h1>
+        </div>
+        {
+          followedTeams != null ?
+            followedTeams.map((id) => (
+              <>
+                <FollowedTeamsCard id={Number(id)}/>
+              </>
+            )) 
+          : ""
+        }
       </div>
     </header>
   );

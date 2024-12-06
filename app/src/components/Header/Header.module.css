@@ -51,29 +51,36 @@
   background-color: white;
   position: absolute;
   right: -50px;
-  width: 305px; 
+  width: 350px; 
   height: 189vh;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: left;
   color: black;
   transition: 0.5s right;
 }
 
-.sideMenu > span {
+.title {
+  display: flex;
+  align-items: center;
+  margin-top: 480px;
+  margin-bottom: 30px;
+  width: 100%;
+  gap: 50px;
+  span {
+    margin-left: 40px;
+  }
+}
+
+.title > span {
   font-size: 30px;
   font-weight: 500;
   cursor: pointer;
 }
 
-.sideMenu > h1 {
+.title > h1 {
   font-size: 20px;
-}
-
-.sideMenu { 
-  h1, span {
-    margin-inline: 25px;
-  }
 }
 
 @media (width <= 720px ) {
