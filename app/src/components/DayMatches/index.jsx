@@ -42,7 +42,7 @@ function DayMatches({ dayMatches }) {
   return (
     <section className={styles.mainSection}>
         {
-          match.map((match, i) => i == 3 ? (
+          match.map((match, i) => i == 2 ? (
             <>
               <div
                 className={styles.matchesDiv}
